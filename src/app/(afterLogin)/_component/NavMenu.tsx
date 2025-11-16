@@ -7,11 +7,8 @@ import {useSession} from "next-auth/react";
 
 export default function NavMenu() {
     const segment = useSelectedLayoutSegment();
-    // const { data: me } = useSession();
-    const me =  {
-        id: 'test',
-        email: 'test@test.com'
-    }
+    const { data: me } = useSession();
+
     console.log(segment);
 
     return (
@@ -98,10 +95,10 @@ export default function NavMenu() {
                     </div>
                 </Link>
             </li>
-            {me?.email && <li>
-                <Link href={`/${me?.email}`}>
+            {me?.user?.email && <li>
+                <Link href={`/${me?.user.email}`}>
                     <div className={style.navPill}>
-                        {segment === me?.email ? <>
+                        {segment === me.user.email ? <>
                                 <svg width={26} viewBox="0 0 24 24" aria-hidden="true"
                                      className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-lwhw9o r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-cnnz9e">
                                     <g>
