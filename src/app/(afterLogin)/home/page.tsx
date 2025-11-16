@@ -5,16 +5,23 @@ import PostForm from "@/app/(afterLogin)/home/_component/PostForm";
 import TabDeciderSuspense from "@/app/(afterLogin)/home/_component/TabDeciderSuspense";
 import {Suspense} from "react";
 import Loading from "@/app/(afterLogin)/home/loading";
+import {auth} from "@/auth";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: '홈 / Z',
+    description: '홈',
+}
 
 export default async function Home() {
-
+    const session = await auth();
     return (
         <main className={style.main}>
             <TabProvider>
                 <Tab/>
-                <PostForm/>
-                <Suspense fallback={<Loading/>}>
-                    <TabDeciderSuspense/>
+                <PostForm me={session}/>
+                <Suspense fallback={<Loading />}>
+                    <TabDeciderSuspense />
                 </Suspense>
             </TabProvider>
         </main>
