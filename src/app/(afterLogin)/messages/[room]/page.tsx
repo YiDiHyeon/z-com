@@ -1,11 +1,11 @@
 import {faker} from "@faker-js/faker";
 import style from './chatRoom.module.css';
 import Link from "next/link";
+import BackButton from "@/app/(afterLogin)/_component/BackButton";
 import cx from 'classnames'
 import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import dayjs from "dayjs";
-import BackButton from "@/app/(afterLogin)/_component/BackBotton";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
@@ -17,14 +17,14 @@ export default function ChatRoom() {
         image: faker.image.avatar(),
     }
     const messages = [
-        {messageId: 1, roomId: 123, id: 'Dihyun',  content: '안녕하세요.', createdAt: new Date()},
+        {messageId: 1, roomId: 123, id: 'zerohch0',  content: '안녕하세요.', createdAt: new Date()},
         {messageId: 2, roomId: 123, id: 'hero', content: '안녕히가세요.', createdAt: new Date()},
     ]
 
     return (
         <main className={style.main}>
             <div className={style.header}>
-                <BackButton/>
+                <BackButton />
                 <div><h2>{user.nickname}</h2></div>
             </div>
             <Link href={user.nickname} className={style.userInfo}>
@@ -34,7 +34,7 @@ export default function ChatRoom() {
             </Link>
             <div className={style.list}>
                 {messages.map((m) => {
-                    if (m.id === 'Dihyun') { // 내 메시지면
+                    if (m.id === 'zerohch0') { // 내 메시지면
                         return (
                             <div
                                 key={m.messageId}

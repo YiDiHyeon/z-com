@@ -1,15 +1,11 @@
 "use client";
-import style from './tab.module.css';
-import {useContext, useState} from "react";
-import {TabContext} from "@/app/(afterLogin)/home/_component/TabProvider";
+
+import style from '../search.module.css';
+import {useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
-
 export default function Tab() {
-    // const [tab, setTab] = useState('hot');
-    const [current, setCurrent] = useState('hot')
-    // const { tab, setTab } = useContext(TabContext);
-
-    const router = useRouter()
+    const [current, setCurrent] = useState('hot');
+    const router = useRouter();
     const searchParams = useSearchParams();
     const onClickHot = () => {
         setCurrent('hot');
@@ -26,7 +22,6 @@ export default function Tab() {
 
     return (
         <div className={style.homeFixed}>
-            <div className={style.homeText}>홈</div>
             <div className={style.homeTab}>
                 <div onClick={onClickHot}>
                     인기
@@ -38,5 +33,5 @@ export default function Tab() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
